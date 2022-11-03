@@ -21,11 +21,20 @@ dependencies:
   flutter:
     sdk: flutter
   google_maps_flutter_android:
-    path: ../google_maps_flutter_android
+    git:
+      path: google_maps_flutter_android
+      ref: from-file-fix
+      url: https://github.com/KWRI/google_maps_flutter.git
   google_maps_flutter_ios:
-    path: ../google_maps_flutter_ios
+    git:
+      path: google_maps_flutter_ios
+      ref: from-file-fix
+      url: https://github.com/KWRI/google_maps_flutter.git
   google_maps_flutter_platform_interface:
-    path: ../google_maps_flutter_platform_interface
+    git:
+      path: google_maps_flutter_platform_interface
+      ref: from-file-fix
+      url: https://github.com/KWRI/google_maps_flutter.git
 
 dev_dependencies:
   flutter_test:

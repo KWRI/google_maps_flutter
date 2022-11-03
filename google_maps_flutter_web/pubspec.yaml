@@ -24,7 +24,10 @@ dependencies:
     sdk: flutter
   google_maps: ^6.1.0
   google_maps_flutter_platform_interface:
-    path: ../google_maps_flutter_platform_interface
+    git:
+      path: google_maps_flutter_platform_interface
+      ref: from-file-fix
+      url: https://github.com/KWRI/google_maps_flutter.git
   sanitize_html: ^2.0.0
   stream_transform: ^2.0.0
 
