@@ -62,10 +62,30 @@ class Convert {
           throw new IllegalArgumentException(
               "'fromAssetImage' Expected exactly 3 arguments, got: " + data.size());
         }
+      case "fromFile":
+        return getBitmapFromFile(data);
       case "fromBytes":
         return getBitmapFromBytes(data);
       default:
         throw new IllegalArgumentException("Cannot interpret " + o + " as BitmapDescriptor");
+    }
+  }
+
+  private static BitmapDescriptor getBitmapFromFile(List<?> data) {
+    if(data.size() == 3) {
+      Bitmap bitmap = BitmapFactory.decodeFile(toString(data.get(1)));
+      double scalar = toDouble(data.get(2));
+      Bitmap scaled = Bitmap.createScaledBitmap(
+        bitmap,
+        (int) Math.ceil((double) bitmap.getWidth() * scalar),
+        (int) Math.ceil((double) bitmap.getHeight() * scalar),
+        true
+      );
+
+      return BitmapDescriptorFactory.fromBitmap(scaled);
+    } else {
+      throw new IllegalArgumentException(
+              "'fromFile' Expected exactly 3 arguments, got: " + data.size());
     }
   }
 

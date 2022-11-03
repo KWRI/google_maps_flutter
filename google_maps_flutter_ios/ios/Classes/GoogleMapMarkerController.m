@@ -181,6 +181,26 @@
                                                      userInfo:nil];
       @throw exception;
     }
+  } else if ([iconData.firstObject isEqualToString:@"fromFile"]) {
+    if(iconData.count == 3) {
+      @try {
+        image = [UIImage imageNamed:iconData[1]];
+        id scaleParam = iconData[2];
+        image = [self scaleImage:image by:scaleParam];
+      } @catch (NSException *exception) {
+        @throw [NSException exceptionWithName:@"InvalidFileDescriptor"
+                                       reason:@"Unable to interpret bytes as a valid image."
+                                     userInfo:nil];
+      }
+    } else {
+        NSString *error =
+            [NSString stringWithFormat:@"'fromFile' should have exactly 3 arguments. Got: %lu",
+                                        (unsigned long)iconData.count];
+        NSException *exception = [NSException exceptionWithName:@"InvalidFileDescriptor"
+                                                        reason:error
+                                                        userInfo:nil];
+        @throw exception;
+    }
   } else if ([iconData[0] isEqualToString:@"fromBytes"]) {
     if (iconData.count == 2) {
       @try {

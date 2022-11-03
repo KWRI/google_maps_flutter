@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart'
     show ImageConfiguration, AssetImage, AssetBundleImageKey;
 import 'package:flutter/services.dart' show AssetBundle;
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
 /// Defines a bitmap image. For a marker, this class can be used to set the
 /// image of the marker icon. For a ground overlay, it can be used to set the
@@ -66,12 +67,14 @@ class BitmapDescriptor {
   static const String _fromAsset = 'fromAsset';
   static const String _fromAssetImage = 'fromAssetImage';
   static const String _fromBytes = 'fromBytes';
+  static const String _fromFile = 'fromFile';
 
   static const Set<String> _validTypes = <String>{
     _defaultMarker,
     _fromAsset,
     _fromAssetImage,
     _fromBytes,
+    _fromFile,
   };
 
   /// Convenience hue value representing red.
@@ -114,6 +117,15 @@ class BitmapDescriptor {
   static BitmapDescriptor defaultMarkerWithHue(double hue) {
     assert(0.0 <= hue && hue < 360.0);
     return BitmapDescriptor._(<Object>[_defaultMarker, hue]);
+  }
+
+  static Future<BitmapDescriptor> fromFile(
+      String filePath, double scale) async {
+    return BitmapDescriptor._(<Object>[
+      _fromFile,
+      filePath,
+      scale,
+    ]);
   }
 
   /// Creates a [BitmapDescriptor] from an asset image.
