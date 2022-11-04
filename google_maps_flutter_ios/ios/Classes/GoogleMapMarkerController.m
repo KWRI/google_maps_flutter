@@ -182,21 +182,21 @@
       @throw exception;
     }
   } else if ([iconData.firstObject isEqualToString:@"fromFile"]) {
-    if(iconData.count == 3) {
+    if(iconData.count == 2) {
       @try {
         image = [UIImage imageNamed:iconData[1]];
-        double scale = [iconData[2] doubleValue];
+        CGFloat screenScale = [[UIScreen mainScreen] scale];
         image = [UIImage imageWithCGImage:[image CGImage]
-                               scale:(scale)
+                               scale:(screenScale)
                          orientation:(image.imageOrientation)];
       } @catch (NSException *exception) {
         @throw [NSException exceptionWithName:@"InvalidFileDescriptor"
-                                       reason:@"Unable to interpret bytes as a valid image."
+                                       reason:@"Unable to interpret file as a valid image."
                                      userInfo:nil];
       }
     } else {
         NSString *error =
-            [NSString stringWithFormat:@"'fromFile' should have exactly 3 arguments. Got: %lu",
+            [NSString stringWithFormat:@"'fromFile' should have exactly 2 arguments. Got: %lu",
                                         (unsigned long)iconData.count];
         NSException *exception = [NSException exceptionWithName:@"InvalidFileDescriptor"
                                                         reason:error
