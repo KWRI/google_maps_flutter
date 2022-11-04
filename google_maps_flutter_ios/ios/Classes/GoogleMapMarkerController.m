@@ -185,8 +185,10 @@
     if(iconData.count == 3) {
       @try {
         image = [UIImage imageNamed:iconData[1]];
-        id scaleParam = iconData[2];
-        image = [self scaleImage:image by:scaleParam];
+        double scale = [iconData[2] doubleValue];
+        image = [UIImage imageWithCGImage:[image CGImage]
+                               scale:(scale)
+                         orientation:(image.imageOrientation)];
       } @catch (NSException *exception) {
         @throw [NSException exceptionWithName:@"InvalidFileDescriptor"
                                        reason:@"Unable to interpret bytes as a valid image."
