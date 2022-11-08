@@ -119,10 +119,12 @@ class BitmapDescriptor {
     return BitmapDescriptor._(<Object>[_defaultMarker, hue]);
   }
 
-  static Future<BitmapDescriptor> fromFile(String filePath) async {
+  static Future<BitmapDescriptor> fromFile(
+      String filePath, double scale) async {
     return BitmapDescriptor._(<Object>[
       _fromFile,
       filePath,
+      scale,
     ]);
   }
 
