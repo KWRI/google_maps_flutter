@@ -23,17 +23,17 @@ dependencies:
   google_maps_flutter_android:
     git:
       path: google_maps_flutter_android
-      ref: from-file-fix
+      ref: density-reduction
       url: https://github.com/KWRI/google_maps_flutter.git
   google_maps_flutter_ios:
     git:
       path: google_maps_flutter_ios
-      ref: from-file-fix
+      ref: density-reduction
       url: https://github.com/KWRI/google_maps_flutter.git
   google_maps_flutter_platform_interface:
     git:
       path: google_maps_flutter_platform_interface
-      ref: from-file-fix
+      ref: density-reduction
       url: https://github.com/KWRI/google_maps_flutter.git
 
 dev_dependencies:
