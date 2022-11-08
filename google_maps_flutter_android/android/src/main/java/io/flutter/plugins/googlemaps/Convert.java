@@ -72,12 +72,12 @@ class Convert {
   }
 
   private static BitmapDescriptor getBitmapFromFile(List<?> data) {
-    if(data.size() == 3) {
+    if(data.size() == 2) {
       Bitmap bitmap = BitmapFactory.decodeFile(toString(data.get(1)));
-      return BitmapDescriptorFactory.fromBitmap(scaled);
+      return BitmapDescriptorFactory.fromBitmap(bitmap);
     } else {
       throw new IllegalArgumentException(
-              "'fromFile' Expected exactly 3 arguments, got: " + data.size());
+              "'fromFile' Expected exactly 2 arguments, got: " + data.size());
     }
   }
 
