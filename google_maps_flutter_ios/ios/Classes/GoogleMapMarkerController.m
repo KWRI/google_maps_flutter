@@ -185,9 +185,9 @@
     if(iconData.count == 3) {
       @try {
         image = [UIImage imageNamed:iconData[1]];
-        CGFloat screenScale = [[UIScreen mainScreen] scale];
+        CGFloat scale = [iconData[2] doubleValue];
         image = [UIImage imageWithCGImage:[image CGImage]
-                               scale:(screenScale)
+                          scale:(scale)
                          orientation:(image.imageOrientation)];
       } @catch (NSException *exception) {
         @throw [NSException exceptionWithName:@"InvalidFileDescriptor"
