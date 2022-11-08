@@ -73,7 +73,19 @@ class Convert {
 
   private static BitmapDescriptor getBitmapFromFile(List<?> data) {
     if(data.size() == 3) {
-      Bitmap bitmap = BitmapFactory.decodeFile(toString(data.get(1)));
+      BitmapFactory.Options options = new BitmapFactory.Options();    
+
+      options.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(filePath, options);
+
+      double scale = toDouble(data.get(2));
+
+      options.inDensity = options.outWidth;
+      options.inJustDecodeBounds = false;
+      options.inTargetDensity = Math.round((double) options.outWidth * scale);
+      options.inScaled = true;
+
+      Bitmap bitmap = BitmapFactory.decodeFile(toString(data.get(1)), options);
       return BitmapDescriptorFactory.fromBitmap(bitmap);
     } else {
       throw new IllegalArgumentException(
