@@ -74,7 +74,7 @@ class Convert {
   private static BitmapDescriptor getBitmapFromFile(List<?> data) {
     if(data.size() == 3) {
       String filePath = toString(data.get(1));
-      double scale = toDouble(data.get(2));
+      float scale = toFloat(data.get(2));
 
       BitmapFactory.Options options = new BitmapFactory.Options();    
 
@@ -83,7 +83,7 @@ class Convert {
 
       options.inDensity = options.outWidth;
       options.inJustDecodeBounds = false;
-      options.inTargetDensity = Math.round((float) options.outWidth * (float) scale);
+      options.inTargetDensity = Math.round((float) options.outWidth * scale);
       options.inScaled = true;
 
       Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
