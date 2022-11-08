@@ -182,7 +182,7 @@
       @throw exception;
     }
   } else if ([iconData.firstObject isEqualToString:@"fromFile"]) {
-    if(iconData.count == 2) {
+    if(iconData.count == 3) {
       @try {
         image = [UIImage imageNamed:iconData[1]];
         CGFloat screenScale = [[UIScreen mainScreen] scale];
@@ -196,7 +196,7 @@
       }
     } else {
         NSString *error =
-            [NSString stringWithFormat:@"'fromFile' should have exactly 2 arguments. Got: %lu",
+            [NSString stringWithFormat:@"'fromFile' should have exactly 3 arguments. Got: %lu",
                                         (unsigned long)iconData.count];
         NSException *exception = [NSException exceptionWithName:@"InvalidFileDescriptor"
                                                         reason:error
