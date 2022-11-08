@@ -83,7 +83,7 @@ class Convert {
 
       options.inDensity = options.outWidth;
       options.inJustDecodeBounds = false;
-      options.inTargetDensity = Math.round((double) options.outWidth * scale);
+      options.inTargetDensity = Math.round((float) options.outWidth * (float) scale);
       options.inScaled = true;
 
       Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
